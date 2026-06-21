@@ -1,19 +1,24 @@
-FROM node:18-alpine
+# Dùng Node 20 (hoặc 22) thay vì 18
+FROM node:20-alpine
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
-RUN npm ci
 
+# Xóa lock file nếu cần (tránh lỗi optional dependencies)
+RUN rm -f package-lock.json
+
+# Cài dependencies (npm install thay vì npm ci để build native binding)
+RUN npm install
+
+# Copy source code
 COPY . .
 
-# Hiển thị cấu trúc thư mục để debug
-RUN ls -la
+# Build ứng dụng
+RUN npm run build
 
-# Build frontend
-RUN npx vite build || (echo "Vite build failed" && exit 1)
-
-# Build server
-RUN npx esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs || (echo "esbuild failed" && exit 1)
-
+# Mở cổng
 EXPOSE 3000
+
+# Chạy ứng dụng
 CMD ["npm", "start"]
