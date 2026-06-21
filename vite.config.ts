@@ -1,24 +1,20 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
-        'next/image': path.resolve(__dirname, './src/mock/next-image.tsx'),
-        'next/navigation': path.resolve(__dirname, './src/mock/next-navigation.tsx'),
-        'next/link': path.resolve(__dirname, './src/mock/next-link.tsx'),
-        '@': path.resolve(__dirname, '.'),
+        // Xóa alias next/* - không cần thiết
+        // Giữ alias @ trỏ vào src (thông dụng)
+        '@': path.resolve(__dirname, './src'),
       },
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };

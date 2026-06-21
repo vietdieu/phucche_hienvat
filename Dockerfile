@@ -1,17 +1,18 @@
 FROM node:20-alpine
+
+# Cài build tools cho native binding
+RUN apk add --no-cache python3 make g++
+
 WORKDIR /app
 
 COPY package*.json ./
-
-# Xóa lock và node_modules cũ
-RUN rm -rf node_modules package-lock.json
 
 # Cài dependencies
 RUN npm install
 
 COPY . .
 
-# Build
+# Build ứng dụng
 RUN npm run build
 
 EXPOSE 3000
