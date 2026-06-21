@@ -1,0 +1,10 @@
+{
+  "name": "Remix: Photo Restoration \u0026 Animation Studio",
+  "description": "An interactive digital workstation to restore historic damaged photos and animate them into cinematic Ghibli-2D or Disney-3D cartoon styles, with real-time prompt generation and automation pipelines.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
