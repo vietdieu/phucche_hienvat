@@ -6,8 +6,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      'next/image': path.resolve(__dirname, './src/mock/next-image.tsx'),
+      'next/navigation': path.resolve(__dirname, './src/mock/next-navigation.tsx'),
+      'next/link': path.resolve(__dirname, './src/mock/next-link.tsx'),
       '@': path.resolve(__dirname, './src'),
-      '@/src': path.resolve(__dirname, './src'), // hỗ trợ import @/src/...
+      '@/src': path.resolve(__dirname, './src'),
     },
   },
   server: {
