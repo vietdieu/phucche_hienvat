@@ -7,7 +7,6 @@ RUN npm install
 
 COPY . .
 
-# Build frontend
 RUN npm run build
 
 EXPOSE 3000

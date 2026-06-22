@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './'),       // cho import "@/src/..."
-      '@/src': path.resolve(__dirname, './src'), // cho import "@/src/..." nếu lỡ dùng
+      '@': path.resolve(__dirname, './src'),
+      '@/src': path.resolve(__dirname, './src'), // hỗ trợ import @/src/...
     },
   },
   server: {
