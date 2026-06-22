@@ -9,8 +9,8 @@ export default defineConfig({
       'next/image': path.resolve(__dirname, './src/mock/next-image.tsx'),
       'next/navigation': path.resolve(__dirname, './src/mock/next-navigation.tsx'),
       'next/link': path.resolve(__dirname, './src/mock/next-link.tsx'),
-      '@': path.resolve(__dirname, './src'),
-      '@/src': path.resolve(__dirname, './src'),
+      // Quan trọng: @ trỏ về thư mục gốc để @/src/... là tuyệt đối
+      '@': path.resolve(__dirname, '.'),
     },
   },
   server: {
